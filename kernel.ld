@@ -22,8 +22,9 @@ SECTIONS {
 		__bss_end = .;
 	}
 
+	//. = current address, advances as data is placed. 
 
-	. = ALIGN(4);
-	. += 128 * 1024; //128KB
-	__stack_top = .;
+	. = ALIGN(4); //align w/ 4 byte address.
+	. += 128 * 1024; //128KB - advance current address by 128KB 
+	__stack_top = .; //current location is the stack top - remove 4 bytes to add to stack and add 4 bytes to remove from it.
 }
